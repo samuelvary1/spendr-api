@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     if user
       data = {
         authentication_token: user.authentication_token,
-        username: user.username,
+        email: user.email,
       }
       render json: data, status: 201
     end
@@ -13,6 +13,6 @@ class SessionsController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :monthly_salary, :password, :password_confirmation)
+    params.require(:user).permit(:email, :username, :monthly_salary, :password, :password_confirmation)
   end
 end
