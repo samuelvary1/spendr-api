@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   before_save :verify_authentication_token
 
   def self.authenticate(credentials)
-    user = self.find_by(username: credentials[:username])
+    user = self.find_by(email: credentials[:username])
     user if user && user.authenticate(credentials[:password])
   end
 

@@ -1,10 +1,10 @@
-class SessionsController < ApplicationController
+class SessionsController < Devise::SessionsController
   def create
     user = User.authenticate(user_params)
     if user
       data = {
         authentication_token: user.authentication_token,
-        username: user.username,
+        email: user.email,
       }
       render json: data, status: 201
     end
@@ -13,6 +13,6 @@ class SessionsController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :monthly_salary, :password, :password_confirmation)
+    params.require(:user).permit(:password, :email)
   end
 end
