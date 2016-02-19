@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class SessionsController < Devise::SessionsController
   def create
     user = User.authenticate(user_params)
     if user
@@ -13,6 +13,6 @@ class SessionsController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :username, :monthly_salary, :password, :password_confirmation)
+    params.require(:user).permit(:password, :email)
   end
 end
