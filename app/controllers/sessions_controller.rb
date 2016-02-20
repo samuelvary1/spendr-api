@@ -9,7 +9,10 @@ class SessionsController < ApplicationController
         username: user.username
       }
       render json: data, status: 201
+    else
+      render json: {error: "Bad username or password"}, status: 401
     end
+
   end
 
   private
