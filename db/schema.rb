@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 20160219194246) do
     t.datetime "updated_at",           null: false
     t.integer  "monthly_salary"
     t.string   "authentication_token"
-    t.string   "email"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", using: :btree
