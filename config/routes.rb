@@ -6,4 +6,6 @@ Rails.application.routes.draw do
       resources :categories, except: [:new, :edit]
     end
   end
+
+  post "/users/sign_in", to: "sessions#create"
 end
