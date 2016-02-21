@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 	has_many :categories
 	has_many :expenses
 
-	before_save :verify_authentication_token
+	# before_save :verify_authentication_token
 
   def self.authenticate(credentials)
     user = self.find_by(username: credentials[:username])
