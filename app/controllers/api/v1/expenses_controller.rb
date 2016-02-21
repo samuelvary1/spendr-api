@@ -16,7 +16,7 @@ class Api::V1::ExpensesController < ApplicationController
 
 private
 	def expense_params
-		params.require(:expense).permit(:amount, :note, :user_id)
+		params.require(:expense).permit(:amount, :note, :user_id, :category_id)
 	end
 
 end
