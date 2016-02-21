@@ -14,7 +14,12 @@ class Api::V1::ExpensesController < ApplicationController
 		render json: Expense.find(params[:id])
 	end
 
-private
+	def destroy
+			expense = Expense.find(params[:id])
+			expense.destroy
+	end
+
+	private
 	def expense_params
 		params.require(:expense).permit(:amount, :note, :user_id, :category_id)
 	end
