@@ -26,6 +26,11 @@ class Api::V1::UsersController < ApplicationController
     render nothing: true
   end
 
+	def me
+    cu = {user: current_user}
+    render json: cu
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :monthly_salary, :password, :password_confirmation)
