@@ -4,12 +4,21 @@ class User < ActiveRecord::Base
 	has_many :categories
 	has_many :expenses
 
-	# before_save :verify_authentication_token
+	before_save :verify_authentication_token
 
   def self.authenticate(credentials)
     user = self.find_by(username: credentials[:username])
     user if user && user.authenticate(credentials[:password])
   end
+
+	def self.create_from_ember(user_parameters)
+		user = User.where(
+			username: user_parameters[:username],
+			monthly_salary: user_parameters[:monthly_salary],
+			password: user_parameters[:password],
+			password_confirmation: user_parameters[:password_confirmation])
+			.first_or_create
+	end
 
   private
 
