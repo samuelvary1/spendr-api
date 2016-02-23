@@ -1,6 +1,7 @@
 class Category < ActiveRecord::Base
 	belongs_to :user
-	has_many :expenses
+	has_many :expenses, dependent: :destroy
+
 
 	def self.create_from_ember(category_parameters)
 	    category = Category.where(
