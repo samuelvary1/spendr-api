@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-devise_for :users, controllers: { sessions: 'sessions' }
+
 
   namespace :api do
     namespace :v1 do
+      get "users/me", to: "users#me"
       resources :users
       resources :expenses, except: [:new, :edit]
+      # current_user
       resources :categories, except: [:new, :edit]
-      get "users/me", to: "users#me"
-      post "/users/sign_in", to: "sessions#create"
     end
   end
 
+  post "/users/sign_in", to: "sessions#create"
 end
