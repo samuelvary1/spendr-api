@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
 	has_secure_password
 
-	has_many :categories
-	has_many :expenses
+	has_many :categories, dependent: :destroy
+	has_many :expenses, dependent: :destroy
 
 	before_save :verify_authentication_token
 

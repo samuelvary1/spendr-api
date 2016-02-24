@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
 	skip_before_action :authenticate!, only: :create
+
 	def index
 		@users = User.all
 		render json: @users
@@ -25,6 +26,11 @@ class Api::V1::UsersController < ApplicationController
     user.destroy
     render nothing: true
   end
+
+# current_user
+	def me
+		render json: current_user
+	end
 
   private
   def user_params

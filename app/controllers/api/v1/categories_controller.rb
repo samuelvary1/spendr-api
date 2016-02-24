@@ -1,15 +1,18 @@
 class Api::V1::CategoriesController < ApplicationController
 	def index
-		@categories = Category.all
+		@categories = Category.all.where(user_id: current_user.id)
 		render json: @categories
 	end
 
 	def create
     category = Category.create_from_ember(category_params)
+		current_user.categories << category
+		current_user.save
     render json: category
 	end
 
   def show
+
     render json: Category.find(params[:id])
   end
 

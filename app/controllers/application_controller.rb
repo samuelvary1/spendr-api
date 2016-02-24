@@ -4,26 +4,6 @@ class ApplicationController < ActionController::API
   before_action :authenticate!
 
   private
-# 	def current_user
-# 		User.find_by(auth_token: the_auth_token)
-# 	end
-#
-# 	def authenticate!
-# 		authenticate_token || render_unauthorized
-# 	end
-#
-# 	def authenticate_token
-# 		authenticate_with_http_token do |token, options|
-# 			User.find_by(auth_token: token)
-# 		end
-# 	end
-#
-# 	def the_auth_token
-# 		authenticate_with_http_token do |token, options|
-# 			return token
-# 		end
-# 	end
-# end
   def authenticate!
     authenticate_token || render_unauthorized
   end
@@ -37,4 +17,9 @@ class ApplicationController < ActionController::API
   def render_unauthorized
     render json: { errors: ['Bad credentials'] }, status: 401
   end
+
+#current_user
+	def current_user
+		authenticate_token
+	end
 end

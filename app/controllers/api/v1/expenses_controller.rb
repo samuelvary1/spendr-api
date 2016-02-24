@@ -1,12 +1,14 @@
 class Api::V1::ExpensesController < ApplicationController
 
 	def index
-		@expenses = Expense.all
+		@expenses = Expense.all.where(user_id: current_user.id)
 		render json: @expenses
 	end
 
 	def create
 		expense = Expense.create_from_ember(expense_params)
+		current_user.expenses << expense
+		current_user.save
 		render json: expense
 	end
 
