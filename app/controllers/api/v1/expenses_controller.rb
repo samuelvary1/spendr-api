@@ -1,7 +1,7 @@
 class Api::V1::ExpensesController < ApplicationController
 
 	def index
-		@expenses = Expense.all.where(user_id: current_user.id)
+		@expenses = current_user.expenses
 		render json: @expenses
 	end
 
