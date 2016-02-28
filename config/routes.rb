@@ -7,8 +7,8 @@ Rails.application.routes.draw do
       resources :expenses, except: [:new, :edit]
       # current_user
       resources :categories, except: [:new, :edit]
-      post "/users/sign_in", to: "sessions#create"
     end
   end
 
+      post "/users/sign_in", to: "sessions#create"
 end
