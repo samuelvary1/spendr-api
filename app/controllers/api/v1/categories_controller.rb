@@ -1,6 +1,6 @@
 class Api::V1::CategoriesController < ApplicationController
 	def index
-		@categories = Category.all.where(user_id: current_user.id)
+		@categories = current_user.categories
 		render json: @categories
 	end
 
