@@ -6,7 +6,7 @@ class Api::V1::ExpensesController < ApplicationController
 	end
 
 	def create
-		binding.pry
+  # binding.pry
 		expense = Expense.create_from_ember(expense_params)
 		category_id = params["expense"]["category_id"].to_i
 		expense[:category_id] = category_id
