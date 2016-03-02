@@ -5,8 +5,8 @@ class Expense < ActiveRecord::Base
 	def self.create_from_ember(expense_parameters)
 	    expense = Expense.where(
 	                  amount: expense_parameters[:amount],
-										note: expense_parameters[:note],
-										category_id: expense_parameters[:category_id]).first_or_create
+										note: expense_parameters[:note]).first_or_create
 
 	  end
 end
+ 
