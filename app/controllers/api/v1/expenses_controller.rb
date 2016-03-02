@@ -7,6 +7,7 @@ class Api::V1::ExpensesController < ApplicationController
 
 	def create
 		expense = Expense.create_from_ember(expense_params)
+		binding.pry
 		cat_id = params["expense"]["category_id"].to_i
 		expense.category_id = cat_id
 		current_user.expenses << expense
